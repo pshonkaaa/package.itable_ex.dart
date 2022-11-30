@@ -1,21 +1,20 @@
 import 'package:ientity/library.dart';
-import 'package:itable/library.dart';
 import 'package:itable_ex/src/internal/RawTableImpl.dart';
-import 'package:sqflite/sqflite.dart';
 
+import 'DatabaseExecutor.dart';
 import 'RawTable/RawTable.dart';
 
-abstract class ITableEx<PARAM> extends ITable<PARAM> {
+abstract class ITableEx extends ITable {
   late final RawTable _raw;
 
-  final Database _db;
+  final DatabaseExecutor _database;
 
   ITableEx({
     required String name,
-    required List<ColumnInfo<PARAM>> columns,
+    required List<EntityColumnInfo> columns,
 
-    required Database db,
-  }) : _db = db, super(
+    required DatabaseExecutor database,
+  }) : _database = database, super(
     name: name,
     columns: columns,
   );
@@ -28,7 +27,7 @@ abstract class ITableEx<PARAM> extends ITable<PARAM> {
     
     final raw = RawTableImpl(
       name: name,
-      db: _db,
+      database: _database,
       table: this,
     );
 

@@ -1,17 +1,13 @@
 name: itable_ex
 description:
-version: 0.0.1
+version: 0.0.2
 publish_to: none
 
 environment:
   sdk: '>=2.17.6 <3.0.0'
 
 dependencies:
-  flutter:
-    sdk: flutter
-  
-  sqflite: any
-    
+  meta: any    
   true_core:
     git:
       url: https://github.com/TrueCollaboration/true_core.dart.git
@@ -25,9 +21,6 @@ dependencies:
   ientity:
     git:
       url: https://github.com/TrueCollaboration/ientity.dart.git
-  itable:
-    git:
-      url: https://github.com/TrueCollaboration/itable.dart.git
 
 dev_dependencies:
   lints: ^2.0.0

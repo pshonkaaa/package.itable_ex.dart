@@ -1,8 +1,10 @@
+import 'package:itable_ex/src/external/DatabaseExecutor.dart';
+import 'package:itable_ex/src/external/ISqlBuilder.dart';
 import 'package:json_ex/library.dart';
 import 'package:logger_ex/library.dart';
-import 'package:sqflite/sqflite.dart';
 
 import 'results/RawDeleteRequestResult.dart';
+import 'results/RawDropTableRequestResult.dart';
 import 'results/RawInsertRequestResult.dart';
 import 'results/RawQueryRequestResult.dart';
 import 'results/RawUpdateRequestResult.dart';
@@ -19,7 +21,7 @@ abstract class RawTable {
 
   /// Executes SQL SELECT
   /// 
-  /// Returns db rows
+  /// Returns rows
   Future<RawQueryRequestResult> query({
     bool? distinct,
     List<String>? columns,
@@ -35,7 +37,7 @@ abstract class RawTable {
 
   /// Executes SQL SELECT
   /// 
-  /// Returns db rows
+  /// Returns rows
   Future<RawQueryRequestResult> rawQuery(
     String sql, {
       List<Object?>? arguments,
@@ -61,7 +63,7 @@ abstract class RawTable {
       String? nullColumnHack,
       ConflictAlgorithm? conflictAlgorithm,
 
-      DatabaseExecutor? db,
+      DatabaseExecutor? database,
       LoggerContext? logger,
   });
 
@@ -86,7 +88,7 @@ abstract class RawTable {
       String? nullColumnHack,
       ConflictAlgorithm? conflictAlgorithm,
 
-      DatabaseExecutor? db,
+      DatabaseExecutor? database,
       LoggerContext? logger,
   });
 
@@ -94,7 +96,7 @@ abstract class RawTable {
     String sql, {
       List<Object?>? arguments,
 
-      DatabaseExecutor? db,
+      DatabaseExecutor? database,
       LoggerContext? logger,
   });
   
@@ -110,8 +112,7 @@ abstract class RawTable {
   /// Executes SQL DROP TABLE
   /// 
   /// Dropping table
-  /// TODO IRawRequestResult AND dropSettingsTable
-  Future<bool> drop();
+  Future<RawDropTableRequestResult> drop();
 
   /// Executes SQL SELECT
   Future<List<String>> toStringTable({
