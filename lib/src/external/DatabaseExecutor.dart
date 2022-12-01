@@ -9,7 +9,7 @@ abstract class DatabaseExecutor {
   
   Future<TableInfo> getTableInfo(String name);
 
-  Object transformRuntimeType<T>(EntityColumnInfo column, T argument);
+  Object? transformRuntimeType<T>(EntityColumnInfo column, T argument);
 
   /// Execute an SQL query with no return value.
   ///
