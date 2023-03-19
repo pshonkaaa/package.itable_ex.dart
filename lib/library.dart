@@ -12,6 +12,7 @@ export 'src/external/RawTable/RawTable.dart';
 export 'src/external/DatabaseExecutor.dart';
 export 'src/external/DatabaseMediator.dart';
 export 'src/external/DefaultSqlBuilder.dart';
+export 'src/external/IConnectionParams.dart';
 export 'src/external/ISqlBuilder.dart';
 export 'src/external/ITableEx.dart';
 export 'src/external/SqliteBuilder.dart';

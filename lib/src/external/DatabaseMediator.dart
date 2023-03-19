@@ -1,4 +1,5 @@
 import 'DatabaseExecutor.dart';
+import 'IConnectionParams.dart';
 
 typedef OnConfigureFunction = Future<void> Function();
 typedef OnOpenFunction = Future<void> Function();
@@ -13,7 +14,7 @@ abstract class DatabaseMediator implements DatabaseExecutor {
   bool get connected;
 
   Future<bool> connect({
-    required Map<String, dynamic> connectionParams,
+    required IConnectionParams connectionParams,
     required OnConfigureFunction onConfigure,
     required OnOpenFunction onOpen,
     required OnCreateFunction onCreate,
