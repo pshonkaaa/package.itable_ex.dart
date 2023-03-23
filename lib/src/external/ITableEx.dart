@@ -1,11 +1,11 @@
 import 'package:ientity/library.dart';
-import 'package:itable_ex/src/internal/RawTableImpl.dart';
+import 'package:itable_ex/src/internal/TableExecutorImpl.dart';
 
 import 'DatabaseExecutor.dart';
-import 'RawTable/RawTable.dart';
+import 'TableExecutor/TableExecutor.dart';
 
 abstract class ITableEx extends ITable {
-  late final RawTable _raw;
+  late final TableExecutorImpl _raw;
 
   final DatabaseExecutor _database;
 
@@ -19,13 +19,13 @@ abstract class ITableEx extends ITable {
     columns: columns,
   );
 
-  RawTable get raw => _raw;
+  TableExecutor get raw => _raw;
   
   @override
   Future<void> initState() async {
     await super.initState();
     
-    final raw = RawTableImpl(
+    final raw = TableExecutorImpl(
       name: name,
       database: _database,
       table: this,
@@ -39,7 +39,6 @@ abstract class ITableEx extends ITable {
   Future<void> dispose() async {
     await super.dispose();
     
-    final raw = this.raw as RawTableImpl;
-    await raw.dispose();
+    await _raw.dispose();
   }
 }

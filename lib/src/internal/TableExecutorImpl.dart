@@ -4,17 +4,17 @@ import 'package:ientity/library.dart';
 import 'package:itable_ex/src/external/DatabaseExecutor.dart';
 import 'package:itable_ex/src/external/ISqlBuilder.dart';
 import 'package:itable_ex/src/external/ITableEx.dart';
-import 'package:itable_ex/src/external/RawTable/RawTable.dart';
-import 'package:itable_ex/src/external/RawTable/results/RawDeleteRequestResult.dart';
-import 'package:itable_ex/src/external/RawTable/results/RawDropTableRequestResult.dart';
-import 'package:itable_ex/src/external/RawTable/results/RawInsertRequestResult.dart';
-import 'package:itable_ex/src/external/RawTable/results/RawQueryRequestResult.dart';
-import 'package:itable_ex/src/external/RawTable/results/RawUpdateRequestResult.dart';
-import 'package:itable_ex/src/external/RawTable/results/RequestDetails.dart';
+import 'package:itable_ex/src/external/TableExecutor/TableExecutor.dart';
+import 'package:itable_ex/src/external/TableExecutor/results/RawDeleteRequestResult.dart';
+import 'package:itable_ex/src/external/TableExecutor/results/RawDropTableRequestResult.dart';
+import 'package:itable_ex/src/external/TableExecutor/results/RawInsertRequestResult.dart';
+import 'package:itable_ex/src/external/TableExecutor/results/RawQueryRequestResult.dart';
+import 'package:itable_ex/src/external/TableExecutor/results/RawUpdateRequestResult.dart';
+import 'package:itable_ex/src/external/TableExecutor/results/RequestDetails.dart';
 import 'package:logger_ex/library.dart';
 import 'package:true_core/library.dart';
 
-class RawTableImpl extends RawTable {
+class TableExecutorImpl extends TableExecutor {
   static const String PROFILER_BUILDER    = "building";
   static const String PROFILER_EXECUTE    = "requesting";
 
@@ -22,7 +22,7 @@ class RawTableImpl extends RawTable {
   final String name;
 
   @override
-  int lastTransactionId = 0;
+  int lastTransactionId = -1;
   
   @override
   bool disposed = false;
@@ -30,7 +30,7 @@ class RawTableImpl extends RawTable {
   final DatabaseExecutor database;
   final ITableEx table;
 
-  RawTableImpl({
+  TableExecutorImpl({
     required this.name,
     required this.database,
     required this.table,
@@ -44,7 +44,6 @@ class RawTableImpl extends RawTable {
   Future<void> dispose() async {
     disposed = true;
   }
-
 
   @override
   Future<RawQueryRequestResult> query({
@@ -563,7 +562,7 @@ class RawTableImpl extends RawTable {
   
 
   @override
-  String toString() => "RawTable(name = $name, database = $database)";
+  String toString() => "TableExecutor(name = $name, database = $database)";
 
 
   void _debugRequest({

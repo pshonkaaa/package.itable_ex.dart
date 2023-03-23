@@ -9,14 +9,14 @@ import 'results/RawInsertRequestResult.dart';
 import 'results/RawQueryRequestResult.dart';
 import 'results/RawUpdateRequestResult.dart';
 
-abstract class RawTable {
+abstract class TableExecutor {
   /// Table name
   String get name;
 
   /// Last id of SQL QUERY/INSERT/UPDATE/REMOVE operation
   int get lastTransactionId;
 
-  /// true if table has been disposed
+  /// true if executor has been disposed
   bool get disposed;
 
   /// Executes SQL SELECT
