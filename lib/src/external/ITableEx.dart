@@ -5,7 +5,7 @@ import 'DatabaseExecutor.dart';
 import 'TableExecutor/TableExecutor.dart';
 
 abstract class ITableEx extends ITable {
-  late final TableExecutorImpl _raw;
+  late final TableExecutorImpl _executor;
 
   final DatabaseExecutor _database;
 
@@ -19,26 +19,25 @@ abstract class ITableEx extends ITable {
     columns: columns,
   );
 
-  TableExecutor get raw => _raw;
+  TableExecutor get executor => _executor;
   
   @override
   Future<void> initState() async {
     await super.initState();
     
-    final raw = TableExecutorImpl(
+    _executor = TableExecutorImpl(
       name: name,
       database: _database,
       table: this,
     );
 
-    await raw.initState();
-    _raw = raw;
+    await _executor.initState();
   }
 
   @override
   Future<void> dispose() async {
     await super.dispose();
     
-    await _raw.dispose();
+    await _executor.dispose();
   }
 }
