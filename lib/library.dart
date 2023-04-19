@@ -1,5 +1,7 @@
 library truecollaboration.true_core.imodel;
 
+export 'src/external/mediators/SqfliteMediator.dart';
+
 export 'src/external/TableExecutor/results/RawDeleteRequestResult.dart';
 export 'src/external/TableExecutor/results/RawDropTableRequestResult.dart';
 export 'src/external/TableExecutor/results/RawInsertRequestResult.dart';
