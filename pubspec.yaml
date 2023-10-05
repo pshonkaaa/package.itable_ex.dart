@@ -1,6 +1,6 @@
 name: itable_ex
 description:
-version: 0.1.3
+version: 0.1.4
 publish_to: none
 
 environment:
@@ -11,16 +11,14 @@ dependencies:
   true_core:
     git:
       url: https://github.com/TrueCollaboration/true_core.dart.git
-  logger_ex_common:
-    git:
-      url: https://github.com/TrueCollaboration/logger_ex_common.dart.git
-  logger_ex:
-    git:
-      url: https://github.com/TrueCollaboration/logger_ex.dart.git
 
   ientity:
     git:
       url: https://github.com/TrueCollaboration/ientity.dart.git
+    
+  logger: any
+  sqflite: any
+  sqflite_common_ffi: any
 
 dev_dependencies:
   lints: ^2.0.0

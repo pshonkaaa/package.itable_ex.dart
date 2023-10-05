@@ -11,7 +11,7 @@ import 'package:itable_ex/src/external/TableExecutor/results/RawInsertRequestRes
 import 'package:itable_ex/src/external/TableExecutor/results/RawQueryRequestResult.dart';
 import 'package:itable_ex/src/external/TableExecutor/results/RawUpdateRequestResult.dart';
 import 'package:itable_ex/src/external/TableExecutor/results/RequestDetails.dart';
-import 'package:logger_ex/library.dart';
+import 'package:logger/logger.dart';
 import 'package:true_core/library.dart';
 
 class TableExecutorImpl extends TableExecutor {
@@ -58,7 +58,7 @@ class TableExecutorImpl extends TableExecutor {
     int? offset,
 
     DatabaseExecutor? database,
-    LoggerContext? logger,
+    Logger? logger,
   }) async {
     _throwIfDisposed();
 
@@ -118,7 +118,7 @@ class TableExecutorImpl extends TableExecutor {
       List<Object?>? arguments,
 
       DatabaseExecutor? database,
-      LoggerContext? logger,
+      Logger? logger,
   }) async {
     _throwIfDisposed();
 
@@ -160,7 +160,7 @@ class TableExecutorImpl extends TableExecutor {
       ConflictAlgorithm? conflictAlgorithm,
 
       DatabaseExecutor? database,
-      LoggerContext? logger,
+      Logger? logger,
   }) async {
     _throwIfDisposed();
 
@@ -220,7 +220,7 @@ class TableExecutorImpl extends TableExecutor {
       ConflictAlgorithm? conflictAlgorithm,
 
       DatabaseExecutor? database,
-      LoggerContext? logger,
+      Logger? logger,
   }) async {
     _throwIfDisposed();
 
@@ -287,7 +287,7 @@ class TableExecutorImpl extends TableExecutor {
       ConflictAlgorithm? conflictAlgorithm,
 
       DatabaseExecutor? database,
-      LoggerContext? logger,
+      Logger? logger,
   }) async {
     _throwIfDisposed();
 
@@ -344,7 +344,7 @@ class TableExecutorImpl extends TableExecutor {
       ConflictAlgorithm? conflictAlgorithm,
 
       DatabaseExecutor? database,
-      LoggerContext? logger,
+      Logger? logger,
   }) async {
     _throwIfDisposed();
 
@@ -404,7 +404,7 @@ class TableExecutorImpl extends TableExecutor {
       List<Object?>? arguments,
 
       DatabaseExecutor? database,
-      LoggerContext? logger,
+      Logger? logger,
   }) async {
     _throwIfDisposed();
 
@@ -445,7 +445,7 @@ class TableExecutorImpl extends TableExecutor {
     List<Object?>? whereArgs,
 
     DatabaseExecutor? database,
-    LoggerContext? logger,
+    Logger? logger,
   }) async {
     _throwIfDisposed();
 
@@ -568,11 +568,11 @@ class TableExecutorImpl extends TableExecutor {
   void _debugRequest({
     required String sql,
     required RequestDetails result,
-    required LoggerContext? logger,
+    required Logger? logger,
   }) {
     if(logger == null)
       return;
-    logger.debug("", sql);
+    logger.d(sql);
   }
 
   // static void _parseSqlBuilder(SqlBuilder builder) {

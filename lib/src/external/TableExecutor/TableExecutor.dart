@@ -1,7 +1,7 @@
 import 'package:itable_ex/src/external/DatabaseExecutor.dart';
 import 'package:itable_ex/src/external/ISqlBuilder.dart';
 import 'package:json_ex/library.dart';
-import 'package:logger_ex/library.dart';
+import 'package:logger/logger.dart';
 
 import 'results/RawDeleteRequestResult.dart';
 import 'results/RawDropTableRequestResult.dart';
@@ -32,7 +32,7 @@ abstract class TableExecutor {
     String? orderBy,
     int? limit,
     int? offset,
-    LoggerContext? logger,
+    Logger? logger,
   });
 
   /// Executes SQL SELECT
@@ -41,7 +41,7 @@ abstract class TableExecutor {
   Future<RawQueryRequestResult> rawQuery(
     String sql, {
       List<Object?>? arguments,
-      LoggerContext? logger,
+      Logger? logger,
   });
 
   /// Executes SQL INSERT
@@ -51,7 +51,7 @@ abstract class TableExecutor {
     JsonObject values, {
       String? nullColumnHack,
       ConflictAlgorithm? conflictAlgorithm,
-      LoggerContext? logger,
+      Logger? logger,
   });
 
   /// Executes SQL INSERT INTO
@@ -64,7 +64,7 @@ abstract class TableExecutor {
       ConflictAlgorithm? conflictAlgorithm,
 
       DatabaseExecutor? database,
-      LoggerContext? logger,
+      Logger? logger,
   });
 
 
@@ -76,7 +76,7 @@ abstract class TableExecutor {
       String? where,
       List<Object?>? whereArgs,
       ConflictAlgorithm? conflictAlgorithm,
-      LoggerContext? logger,
+      Logger? logger,
   });
 
   /// Executes SQL UPDATE
@@ -89,7 +89,7 @@ abstract class TableExecutor {
       ConflictAlgorithm? conflictAlgorithm,
 
       DatabaseExecutor? database,
-      LoggerContext? logger,
+      Logger? logger,
   });
 
   Future<RawUpdateRequestResult> rawUpdate(
@@ -97,7 +97,7 @@ abstract class TableExecutor {
       List<Object?>? arguments,
 
       DatabaseExecutor? database,
-      LoggerContext? logger,
+      Logger? logger,
   });
   
   /// Executes SQL DELETE
@@ -106,7 +106,7 @@ abstract class TableExecutor {
   Future<RawDeleteRequestResult> delete({
     String? where,
     List<Object?>? whereArgs,
-    LoggerContext? logger,
+    Logger? logger,
   });
 
   /// Executes SQL DROP TABLE

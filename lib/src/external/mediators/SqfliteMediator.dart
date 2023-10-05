@@ -150,7 +150,7 @@ class SqfliteMediator implements DatabaseMediator {
       return v.toString();
     else if(v is Uint8List)
       return v;
-    else throw(new Exception("Wrong type of value; column = ${column.name}; instance of ${v.runtimeType}"));
+    else throw(ArgumentError("Wrong value type; column = ${column.name}; runtimeType = ${v.runtimeType}"));
   }
 
   @override
