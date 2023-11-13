@@ -1,6 +1,5 @@
 import 'package:itable_ex/src/external/DatabaseExecutor.dart';
 import 'package:itable_ex/src/external/ISqlBuilder.dart';
-import 'package:json_ex/library.dart';
 import 'package:logger/logger.dart';
 
 import 'results/RawDeleteRequestResult.dart';
@@ -48,7 +47,7 @@ abstract class TableExecutor {
   /// 
   /// Returns [PRIMARY_KEY]
   Future<RawInsertRequestResult> insert(
-    JsonObject values, {
+    Map<String, dynamic> values, {
       String? nullColumnHack,
       ConflictAlgorithm? conflictAlgorithm,
       Logger? logger,
