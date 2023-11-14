@@ -7,6 +7,8 @@ import 'package:sqflite/sqflite.dart' as sqflite;
 import 'package:sqflite_common_ffi/sqflite_ffi.dart' as sqflite;
 import 'package:true_core/library.dart';
 
+import 'internal/sqlite_builder.dart';
+
 abstract class SqliteColumnTypes {
   static const DATABASE_NAME = "sqlite";
 

@@ -1,5 +1,4 @@
-import 'DefaultSqlBuilder.dart';
-import 'ISqlBuilder.dart';
+import 'package:itable_ex/library.dart';
 
 class SqliteBuilder extends DefaultSqlBuilder {
   @override

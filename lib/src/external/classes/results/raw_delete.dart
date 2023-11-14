@@ -1,7 +1,7 @@
-import 'RequestDetails.dart';
+import 'package:itable_ex/library.dart';
 
-class RawDropTableRequestResult extends RequestDetails<bool> {
-  RawDropTableRequestResult({
+class RawDeleteRequestResult extends RequestDetails<int> {  
+  RawDeleteRequestResult({
     required int transactionId,
     required StackTrace stackTrace,
   }) : super(

@@ -1,20 +1,15 @@
-import 'package:itable_ex/src/external/DatabaseExecutor.dart';
-import 'package:itable_ex/src/external/ISqlBuilder.dart';
+import 'package:itable_ex/library.dart';
 import 'package:logger/logger.dart';
+import 'package:true_core/library.dart';
 
-import 'results/RawDeleteRequestResult.dart';
-import 'results/RawDropTableRequestResult.dart';
-import 'results/RawInsertRequestResult.dart';
-import 'results/RawQueryRequestResult.dart';
-import 'results/RawUpdateRequestResult.dart';
-
-abstract class TableExecutor {
+abstract class TableExecutor implements IAsyncStateable {
   /// Table name
   String get name;
 
   /// Last id of SQL QUERY/INSERT/UPDATE/REMOVE operation
   int get lastTransactionId;
 
+  @override
   /// true if executor has been disposed
   bool get disposed;
 

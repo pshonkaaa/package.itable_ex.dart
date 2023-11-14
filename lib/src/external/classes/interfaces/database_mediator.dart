@@ -1,5 +1,5 @@
-import 'DatabaseExecutor.dart';
-import 'IConnectionParams.dart';
+import 'database_executor.dart';
+import 'connection_params.dart';
 
 typedef OnConfigureFunction = Future<void> Function();
 typedef OnOpenFunction = Future<void> Function();
@@ -7,9 +7,12 @@ typedef OnCreateFunction = Future<void> Function(int version);
 typedef OnUpgradeFunction = Future<void> Function(int oldVersion, int newVersion);
 typedef OnDowngradeFunction = Future<void> Function(int oldVersion, int newVersion);
 
+// TODO currently interface, redesign to base
 abstract class DatabaseMediator implements DatabaseExecutor {
   /// The path of the database
   // String get path;
+  // TODO
+  // IConnectionParams get connectionParams,
 
   bool get connected;
 

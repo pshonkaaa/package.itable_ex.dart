@@ -1,4 +1,4 @@
-import 'RequestDetails.dart';
+import 'package:itable_ex/library.dart';
 
 class RawUpdateRequestResult extends RequestDetails<int> {  
   RawUpdateRequestResult({

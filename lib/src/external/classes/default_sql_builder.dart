@@ -1,4 +1,4 @@
-import 'package:itable_ex/src/external/ISqlBuilder.dart';
+import 'package:itable_ex/library.dart';
 
 /// SQL command builder.
 class DefaultSqlBuilder implements ISqlBuilder {

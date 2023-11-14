@@ -1,21 +1,24 @@
 library truecollaboration.true_core.imodel;
 
-export 'src/external/mediators/SqfliteMediator.dart';
+export 'src/external/classes/abstract/base_table_ex.dart';
+export 'src/external/classes/abstract/request_details.dart';
 
-export 'src/external/TableExecutor/results/RawDeleteRequestResult.dart';
-export 'src/external/TableExecutor/results/RawDropTableRequestResult.dart';
-export 'src/external/TableExecutor/results/RawInsertRequestResult.dart';
-export 'src/external/TableExecutor/results/RawQueryRequestResult.dart';
-export 'src/external/TableExecutor/results/RawUpdateRequestResult.dart';
-export 'src/external/TableExecutor/results/RequestDetails.dart';
+export 'src/external/classes/database_mediators/sqlite/sqflite.dart';
 
-export 'src/external/TableExecutor/TableExecutor.dart';
+export 'src/external/classes/interfaces/connection_params.dart';
+export 'src/external/classes/interfaces/database_executor.dart';
+export 'src/external/classes/interfaces/database_mediator.dart';
+export 'src/external/classes/interfaces/sql_builder.dart';
 
-export 'src/external/DatabaseExecutor.dart';
-export 'src/external/DatabaseMediator.dart';
-export 'src/external/DefaultSqlBuilder.dart';
-export 'src/external/IConnectionParams.dart';
-export 'src/external/ISqlBuilder.dart';
-export 'src/external/ITableEx.dart';
-export 'src/external/SqliteBuilder.dart';
-export 'src/external/TableInfo.dart';
+export 'src/external/classes/results/raw_delete.dart';
+export 'src/external/classes/results/raw_drop_table.dart';
+export 'src/external/classes/results/raw_insert.dart';
+export 'src/external/classes/results/raw_query.dart';
+export 'src/external/classes/results/raw_update.dart';
+
+export 'src/external/classes/default_sql_builder.dart';
+export 'src/external/classes/sql_request.dart';
+export 'src/external/classes/table_executor.dart';
+export 'src/external/classes/table_info.dart';
+
+export 'src/external/enums.dart';

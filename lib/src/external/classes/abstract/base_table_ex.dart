@@ -1,15 +1,13 @@
 import 'package:ientity/library.dart';
-import 'package:itable_ex/src/internal/TableExecutorImpl.dart';
+import 'package:itable_ex/library.dart';
+import 'package:itable_ex/src/internal/table_executor_impl.dart';
 
-import 'DatabaseExecutor.dart';
-import 'TableExecutor/TableExecutor.dart';
-
-abstract class ITableEx extends ITable {
+abstract class BaseTableEx extends BaseTable {
   late final TableExecutorImpl _executor;
 
   final DatabaseExecutor _database;
 
-  ITableEx({
+  BaseTableEx({
     required String name,
     required List<EntityColumnInfo> columns,
 
