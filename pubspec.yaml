@@ -10,11 +10,11 @@ dependencies:
   meta: any    
   true_core:
     git:
-      url: https://github.com/TrueCollaboration/true_core.dart.git
+      url: https://github.com/TrueCollaboration/package.true_core.dart.git
 
   ientity:
     git:
-      url: https://github.com/TrueCollaboration/ientity.dart.git
+      url: https://github.com/TrueCollaboration/package.ientity.dart.git
     
   logger: any
   sqflite: any
