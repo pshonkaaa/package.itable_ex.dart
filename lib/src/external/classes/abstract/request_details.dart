@@ -1,4 +1,4 @@
-import 'package:foundation/library.dart';
+import 'package:pshondation/library.dart';
 
 abstract class RequestDetails<T> {
   /// Transaction id

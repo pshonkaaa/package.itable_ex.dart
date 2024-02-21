@@ -1,6 +1,6 @@
 import 'package:itable_ex/library.dart';
 import 'package:logger/logger.dart';
-import 'package:foundation/library.dart';
+import 'package:pshondation/library.dart';
 
 abstract class TableExecutor implements IAsyncStateable {
   /// Table name
