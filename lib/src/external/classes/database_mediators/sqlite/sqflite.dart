@@ -3,9 +3,9 @@ import 'dart:typed_data';
 
 import 'package:ientity/library.dart';
 import 'package:itable_ex/library.dart';
-import 'package:sqflite/sqflite.dart' as sqflite;
-import 'package:sqflite_common_ffi/sqflite_ffi.dart' as sqflite;
-import 'package:true_core/library.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
+import 'package:sqflite_common_ffi_web/sqflite_ffi_web.dart';
+import 'package:foundation/library.dart';
 
 import 'internal/sqlite_builder.dart';
 
@@ -26,7 +26,7 @@ abstract class SqliteColumnTypes {
 }
 
 class SqfliteConnectionParams implements IConnectionParams {
-  final String path;
+  final File path;
   final int version;
   const SqfliteConnectionParams({
     required this.path,
@@ -35,10 +35,10 @@ class SqfliteConnectionParams implements IConnectionParams {
 }
 
 class SqfliteMediator implements DatabaseMediator {
-  sqflite.Database? _sqflite;
+  Database? _sqflite;
   SqfliteMediator();
 
-  
+  static const bool _kIsWeb = bool.fromEnvironment('dart.library.js_util');
   
   @override
   final ISqlBuilder sqlBuilder = SqliteBuilder();
@@ -54,10 +54,19 @@ class SqfliteMediator implements DatabaseMediator {
     required OnUpgradeFunction onUpgrade,
     required OnDowngradeFunction onDowngrade,
   }) async {
-    if(Platform.isWindows) {
-      _sqflite = await sqflite.databaseFactoryFfi.openDatabase(
-        connectionParams.path,
-        options: sqflite.OpenDatabaseOptions(
+    final DatabaseFactory _databaseFactory;
+
+    if(_kIsWeb) {
+      _databaseFactory = databaseFactoryFfiWebNoWebWorker;
+    } else if(Platform.isWindows || Platform.isMacOS || Platform.isLinux) {
+      _databaseFactory = databaseFactoryFfi;
+    } else {
+      _databaseFactory = databaseFactory;
+    }
+
+    _sqflite = await _databaseFactory.openDatabase(
+        connectionParams.path.path,
+        options: OpenDatabaseOptions(
           version: connectionParams.version,
           onConfigure: (db) {
             _sqflite = db;
@@ -69,22 +78,6 @@ class SqfliteMediator implements DatabaseMediator {
           onOpen: (db) => onOpen(),
         ),
       );
-    } else {
-      _sqflite = await sqflite.openDatabase(
-        connectionParams.path,
-        // options: sqflite.OpenDatabaseOptions(
-          version: connectionParams.version,
-          onConfigure: (db) {
-            _sqflite = db;
-            onConfigure();
-          },
-          onCreate: (db, version) => onCreate(version),
-          onUpgrade: (db, oldVersion, newVersion) => onUpgrade(oldVersion, newVersion),
-          onDowngrade: (db, oldVersion, newVersion) => onDowngrade(oldVersion, newVersion),
-          onOpen: (db) => onOpen(),
-        // ),
-      );
-    }
     return true;
   }
 

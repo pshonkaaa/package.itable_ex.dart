@@ -1,4 +1,4 @@
-library truecollaboration.true_core.imodel;
+library truecollaboration.foundation.imodel;
 
 export 'src/external/classes/abstract/base_table_ex.dart';
 export 'src/external/classes/abstract/request_details.dart';

@@ -8,17 +8,18 @@ environment:
 
 dependencies:
   meta: any    
-  true_core:
+  foundation:
     git:
-      url: https://github.com/TrueCollaboration/package.true_core.dart.git
+      url: https://github.com/pshonkaaa/package.foundation.dart.git
 
   ientity:
     git:
-      url: https://github.com/TrueCollaboration/package.ientity.dart.git
+      url: https://github.com/pshonkaaa/package.ientity.dart.git
     
   logger: any
   sqflite: any
   sqflite_common_ffi: any
+  sqflite_common_ffi_web: any
 
 dev_dependencies:
   lints: ^2.0.0

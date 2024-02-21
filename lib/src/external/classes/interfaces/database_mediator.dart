@@ -16,7 +16,8 @@ abstract class DatabaseMediator implements DatabaseExecutor {
 
   bool get connected;
 
-  Future<bool> connect({
+  /// Connecting to the database. Success or exception
+  Future<void> connect({
     required IConnectionParams connectionParams,
     required OnConfigureFunction onConfigure,
     required OnOpenFunction onOpen,
@@ -26,7 +27,7 @@ abstract class DatabaseMediator implements DatabaseExecutor {
   });
 
   /// Close the database. Cannot be accessed anymore
-  Future<bool> close();
+  Future<void> close();
 
   /// Calls in action must only be done using the transaction object
   /// using the database will trigger a dead-lock.
